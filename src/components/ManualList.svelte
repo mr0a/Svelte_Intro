@@ -12,15 +12,20 @@
 </ul>
 
 <script>
+    import { createEventDispatcher } from 'svelte';
+    let dispatch = createEventDispatcher();
     let guitarInput = '';
     let guitars = [];
     let inputElement;
 
     function addGuitar(){
-        // guitars.push(guitarInput);
-        // Trigger activity on a variable with assignment
-        // guitars = guitars;
+        // Dispatch a custom event
+        dispatch('new-item', {
+            value: guitarInput,
+        })
+
         guitars = [...guitars, guitarInput] // Reassigning with new value to trigger update
+        
         guitarInput = ''
         inputElement.focus() // Bring back focus to input after submit
     }
