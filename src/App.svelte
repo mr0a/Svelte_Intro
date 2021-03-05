@@ -1,5 +1,6 @@
 <script>
-	import HelloForm from './components/HelloForm.svelte';
+  import HelloForm from './components/HelloForm.svelte';
+  import ManualList from './components/ManualList.svelte';
 	export let name;
 </script>
 
@@ -31,5 +32,6 @@
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
     how to build Svelte apps.
   </p> -->
-  <HelloForm />
+  <!-- <HelloForm /> -->
+  <ManualList />
 </main>
