@@ -1,40 +1,15 @@
 <script>
-  import HelloForm from './components/HelloForm.svelte';
-  import ManualList from './components/ManualList.svelte';
-	export let name;
+  import List from './components/List.svelte';
+  let title = 'My Life';
+  import {onMount} from 'svelte'
+
+  let items = [];
+
+  onMount(async () => {
+    let response = await fetch('data.json');
+    items = await response.json();
+  })
 </script>
 
-<style>
-  /* main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  } */
-
-  /* h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  } */
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
-</style>
-
-<main>
-  <!-- <h1>Hello {name}!</h1> -->
-  <!-- <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p> -->
-  <!-- <HelloForm /> -->
-  <ManualList on:new-item={
-    // Function can also be passed instead
-    event => console.log(`New item ${event.detail.value}`)
-  } />
-</main>
+<!-- Anything inside {} is js expression -->
+<List title={title} items={items} />
