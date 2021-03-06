@@ -2,7 +2,7 @@
   import Navbar from './components/Navbar.svelte';
 
   let user = {
-    isAuth: false
+    isAuth: true
   }
 </script>
 

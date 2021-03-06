@@ -1,15 +1,23 @@
 <script>
+    import Navlink from './Navlink.svelte'
     export let user = {};
+
+    let current = 'Dashboard';
+
+    function changeCurrent(event){
+        current = event.detail.text;
+    }
 </script>
 
 <div>
     <ul>
         {#if !user.isAuth}
-            <li><a href="/">Login</a></li>
+            <Navlink href={'/'} text={'Login'} active={current === 'Login'} on:activate={changeCurrent} />
         {:else}
-        <li><a href="/">Dashboard</a></li>
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Logout</a></li>
+        <Navlink href={'/'} text={'Dashboard'} active={current === 'Dashboard'} on:activate={changeCurrent}/>
+        <Navlink href={'/'} text={'Profile'} active={current === 'Profile'} on:activate={changeCurrent}/>
+        <Navlink href={'/'} text={'Logout'} active={current === 'Logout'} on:activate={changeCurrent}/>
+
         {/if}
     </ul>
 </div>
@@ -25,14 +33,5 @@
         padding: 0;
         list-style: none;
         margin: auto 0 auto auto;
-    }
-
-    li{
-        display: inline-block;
-        margin: 0;
-        padding-left: 15px;
-    }
-    a{
-        color: white;
     }
 </style>
