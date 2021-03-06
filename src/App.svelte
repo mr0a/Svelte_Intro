@@ -1,15 +1,9 @@
 <script>
-  import List from './components/List.svelte';
-  let title = 'My Life';
-  import {onMount} from 'svelte'
+  import Navbar from './components/Navbar.svelte';
 
-  let items = [];
-
-  onMount(async () => {
-    let response = await fetch('data.json');
-    items = await response.json();
-  })
+  let user = {
+    isAuth: false
+  }
 </script>
 
-<!-- Anything inside {} is js expression -->
-<List title={title} items={items} />
+<Navbar user={user} />
